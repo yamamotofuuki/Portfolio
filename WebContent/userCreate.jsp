@@ -64,6 +64,12 @@
   color: rgba(153,153,153,0.5); /* 透明度の指定*/
   }
   
+  .error-message {
+  color: red;
+  font-size: 13px;
+  margin-top: 5px;
+  }
+  
 </style>
 </head>
 
@@ -79,12 +85,17 @@
     </div>
     
     <div id="loginform">
-      <s:if test="errorMessage != ''">
-        <s:property value="errorMessage" escapeXml="false"/>
-      </s:if>
       
       <table>
 	    <s:form action="UserCreateConfirmAction">
+	    
+	      <td>
+            <s:if test="passwordErrorMessage != null && passwordErrorMessage != ''">
+              <div class="error-message">
+                <s:property value="passwordErrorMessage" escapeXml="false"/>
+              </div>
+            </s:if>
+          </td>
 	    
 	    <tr>
 	      <td>
@@ -92,9 +103,18 @@
 	      </td>
 	      
 	      <td><!--半角英数のみ-->
-	        <input type="password" maxlength="10" name="loginPassword" placeholder="Pwssword12" pattern="^[a-zA-Z0-9]+$" value=""/>
+	        <input type="password" maxlength="10" name="loginPassword" placeholder="Pwssword12" pattern="^[a-zA-Z0-9]+$" value="<s:property value='loginPassword'/>"/>
+
 	      </td>
 	    </tr>
+	    
+	      <td>
+            <s:if test="userNameErrorMessage != null && userNameErrorMessage != ''">
+              <div class="error-message">
+                <s:property value="userNameErrorMessage" escapeXml="false" />
+              </div>
+            </s:if>
+          </td>
 	    
 	    <tr>
 	      <td>
@@ -102,7 +122,7 @@
 		  </td>
 		  
 		  <td><!--ひらがな・漢字のみ指定-->
-		    <input type="text" maxlength="10" name="userName" placeholder="山田" pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*" value=""/>
+		    <input type="text" maxlength="10" name="userName" placeholder="山田" pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*" value="<s:property value='userName'/>"/>
 		  </td>
 		</tr>
 		

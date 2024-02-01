@@ -16,6 +16,7 @@
   
   <script>
     document.addEventListener("DOMContentLoaded", function() {
+        
     	var passwordField = document.getElementById('passwordField');
     	var actualPassword = "<s:property value='loginPassword' escapeXml='false'/>"; // パスワードを取得
     	// パスワードの文字数に応じて●を連結
@@ -67,7 +68,9 @@
   
   .botton {
   cursor: pointer;
-  }
+  display: flex;
+  justify-content: space-between; /* ボタンを横に均等に配置 */
+  }  
   
 </style>
 </head>
@@ -111,9 +114,13 @@
     
     <tr>
       <td>
-        <s:submit class="botton" value="完了"/>
+        <button type="button" class="botton" onclick="history.back();">戻る</button>
       </td>
-    </tr> 
+      
+      <td>
+        <button type="submit" class="botton">完了</button>
+      </td>
+    </tr>
     
     </s:form>
     </table>
