@@ -88,8 +88,8 @@
 	            <label>パスワード:</label>
 	          </td>
 	         
-	          <td>
-	            <input type="text" name="loginPassword" value=""/>
+	          <td><!--半角英数のみ-->
+	            <input type="password" maxlength="10" name="loginPassword" pattern="^[a-zA-Z0-9]+$" value=""/>
 	          </td>
 	        </tr>
 	        
@@ -98,8 +98,8 @@
 	            <label>ユーザー名:</label>
 		      </td>
 		      
-		      <td>
-		        <input type="text" name="loginUserId" value=""/>
+		      <td><!--ひらがな・漢字のみ指定-->
+		        <input type="text" maxlength="10" name="loginUserId" pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*" value=""/>
 		      </td>
 		    </tr>
 		    

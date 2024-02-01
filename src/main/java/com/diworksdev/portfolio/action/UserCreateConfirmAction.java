@@ -18,14 +18,16 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 	public String execute() {
 		String result = SUCCESS;
 		
-		if((!(loginPassword.equals("")) && !(userName.equals("")))){
-			
-			//確認画面で表示したい値をセッションに格納
-			session.put("loginPassword",loginPassword);
-			session.put("userName",userName);
-		}else {
-			setErrorMessage("未入力の項目があります。");
+		if (loginPassword == null || loginPassword.trim().isEmpty()) {
+			setErrorMessage("パスワードが未入力です");
 			result = ERROR;
+		} else if (userName == null || userName.trim().isEmpty()) {
+			setErrorMessage("ユーザー名が未入力です");
+			result = ERROR;
+		} else {
+			// 入力が正常ならセッションに値を格納
+			session.put("loginPassword", loginPassword);
+			session.put("userName", userName);
 		}
 		return result;
 	}

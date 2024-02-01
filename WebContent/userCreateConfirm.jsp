@@ -14,6 +14,16 @@
   <meta name="keywords"content=""/>
   <title>UserCreateConfirm画面</title>
   
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    	var passwordField = document.getElementById('passwordField');
+    	var actualPassword = "<s:property value='loginPassword' escapeXml='false'/>"; // パスワードを取得
+    	// パスワードの文字数に応じて●を連結
+    	var obscuredPassword = '●'.repeat(actualPassword.length);
+    	passwordField.innerHTML = obscuredPassword;
+    });
+  </script>
+  
 <style type="text/css">
 / * ========TAG LAYOUT======== * /
 
@@ -84,7 +94,7 @@
         <label>パスワード:</label>
       </td>
       
-      <td>
+      <td id="passwordField">
         <s:property value="loginPassword" escapeXml="false"/>
       </td>
     </tr>

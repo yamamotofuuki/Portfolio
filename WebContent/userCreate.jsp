@@ -59,6 +59,11 @@
   cursor: pointer;
   }
   
+  /* プレースホルダーテキストの色を変更する為のスタイル*/
+  ::placeholder {
+  color: rgba(153,153,153,0.5); /* 透明度の指定*/
+  }
+  
 </style>
 </head>
 
@@ -86,8 +91,8 @@
 	        <label>パスワード:</label>
 	      </td>
 	      
-	      <td>
-	        <input type="text" name="loginPassword" value=""/>
+	      <td><!--半角英数のみ-->
+	        <input type="password" maxlength="10" name="loginPassword" placeholder="Pwssword12" pattern="^[a-zA-Z0-9]+$" value=""/>
 	      </td>
 	    </tr>
 	    
@@ -96,8 +101,8 @@
 	        <label>ユーザー名 :</label>
 		  </td>
 		  
-		  <td>
-		    <input type="text" name="userName" value=""/>
+		  <td><!--ひらがな・漢字のみ指定-->
+		    <input type="text" maxlength="10" name="userName" placeholder="山田" pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*" value=""/>
 		  </td>
 		</tr>
 		
