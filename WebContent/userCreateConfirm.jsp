@@ -22,10 +22,7 @@
   padding: 0;
   line-height: 1.6;
   letter-spacing: 1px;
-  font-family: Verdana, Helvetica, sans-serif;
   font-size: 12px;
-  color: #333;
-  background: #fff;
   }
 
   table {
@@ -37,27 +34,29 @@
   
   #top {
   width: 780px;
-  margin: 30px auto;
-  border: 1px solid #333;
   }
   
-  #header {
-  width: 100%;
-  height: 80px;
-  background-color: skyblue;
-  }
-
   #main {
   width: 100%;
   height: 500px;
   text-align: center;
+  background: linear-gradient(to bottom, #ffffff, #87CEEB, #ffffff);
   }
-
-  #footer {
-  width: 100%;
-  height: 80px;
-  background-color: skyblue;
-  clear: both;
+  
+  #main h3 {
+  margin-top: 75px;
+  }
+  
+  #loginform {
+  width: 500px;
+  margin: 30px auto;
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+  }
+  
+  .botton {
+  cursor: pointer;
   }
   
 </style>
@@ -70,10 +69,11 @@
   </div>
   
   <div id="main">
-    <div id="top"></div>
-    
-    <div>
+    <div id="top">
       <h3>登録する内容は以下でよろしいですか。</h3>
+    </div>
+    
+    <div id="loginform">
 
     <table>
     
@@ -81,7 +81,7 @@
     
     <tr id="box">
       <td>
-        <label>ログインPASS:</label>
+        <label>パスワード:</label>
       </td>
       
       <td>
@@ -101,7 +101,7 @@
     
     <tr>
       <td>
-        <s:submit value="完了"/>
+        <s:submit class="botton" value="完了"/>
       </td>
     </tr> 
     

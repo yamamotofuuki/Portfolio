@@ -22,10 +22,7 @@
   padding: 0;
   line-height: 1.6;
   letter-spacing: 1px;
-  font-family: Verdana, Helvetica, sans-serif;
   font-size: 12px;
-  color: #333;
-  background: #fff;
   }
   
   table {
@@ -37,32 +34,34 @@
 
   #top {
   width: 780px;
-  margin: 30px auto;
-  border:1px solid #333;
-  }
-
-  #header {
-  width: 100%;
-  height: 80px;
-  background-color: skyblue;
   }
   
   #main {
   width: 100%;
   height: 500px;
   text-align: center;
+  background: linear-gradient(to bottom, #ffffff, #87CEEB, #ffffff);
   }
-
-  #footer {
-  width: 100%;
-  height: 80px;
-  background-color: skyblue; 
-  clear: both;
+  
+  #main h3 {
+  margin-top: 75px;
+  }
+  
+  #loginform {
+  width: 500px;
+  margin: 30px auto;
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 5px;
   }
 
   #text-link {
   display: inline-block;
   text-align: right;
+  }
+  
+  .botton {
+  cursor: pointer;
   }
   
 </style>
@@ -76,11 +75,10 @@
   
   <div id="main">
     <div id="top">
-      <p></p>
+      <h3>ログイン</h3>
     </div>
     
-    <div>
-	  <h3>学習を始めるにはログインをお願いします。</h3>
+    <div id="loginform">
 	    <s:form action="LoginAction">
 	    
 	      <table>
@@ -107,7 +105,7 @@
 		    
 		    <tr>
 		      <td>
-		        <s:submit value="ログイン"/>
+		        <s:submit class="botton" value="ログイン"/>
 		      </td>
 		    </tr>
 		    

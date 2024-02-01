@@ -22,10 +22,7 @@
   padding: 0;
   line-height: 1.6;
   letter-spacing: 1px;
-  font-family: Verdana, Helvetica, sans-serif;
   font-size: 12px;
-  color: #333;
-  background: #fff;
   }
 
   table {
@@ -36,27 +33,17 @@
 / * ========ID LAYOUT======== * /
   #top {
   width: 780px;
-  margin: 30px auto;
-  border: 1px solid #333;
   }
   
-  #header {
-  width: 100%;
-  height: 80px;
-  background-color: skyblue;
-  }
-
   #main {
   width: 100%;
   height: 500px;
   text-align: center;
+  background: linear-gradient(to bottom, #ffffff, #87CEEB, #ffffff);
   }
-
-  #footer {
-  width: 100%;
-  height: 80px;
-  background-color: skyblue;
-  clear: both;
+  
+  #main h3 {
+  margin-top: 75px;
   }
   
 </style>
@@ -70,12 +57,10 @@
   
   <div id="main">
     <div id="top">
-      <p>UserCreateComplete</p>
+      <h3>ユーザーの登録が完了致しました。</h3>
     </div>
     
     <div>
-      <h3>ユーザーの登録が完了致しました。</h3>
-      
       <div>
         <a href='<s:url action="HomeAction"/>'>ログインへ</a>
       </div>

@@ -22,10 +22,7 @@
   padding: 0;
   line-height: 1.6;
   letter-spacing: 1px;
-  font-family: Verdana, Helvetica, sans-serif;
   font-size: 12px;
-  color: #333;
-  background: #fff;
   }
 
   table {
@@ -37,29 +34,31 @@
 
   #top {
   width: 780px;
-  margin: 30px auto;
-  border:1px solid #333;
-  }
-  
-  #header {
-  width: 100%;
-  height: 80px;
-  background-color: skyblue;
   }
 
   #main {
   width: 100%;
   height: 500px;
   text-align: center;
+  background: linear-gradient(to bottom, #ffffff, #87CEEB, #ffffff);
   }
-
-  #footer {
-  width: 100%;
-  height: 80px;
-  background-color: skyblue;
-  clear: both;
+  
+  #main h3 {
+  margin-top: 75px;
   }
-
+  
+  #loginform {
+  width: 500px;
+  margin: 30px auto;
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+  }
+  
+  .botton {
+  cursor: pointer;
+  }
+  
 </style>
 </head>
 
@@ -71,10 +70,10 @@
   
   <div id="main">
     <div id="top">
-      <h3>新規登録をお願いします。</h3>
+      <h3>新規ユーザー登録</h3>
     </div>
     
-    <div>
+    <div id="loginform">
       <s:if test="errorMessage != ''">
         <s:property value="errorMessage" escapeXml="false"/>
       </s:if>
@@ -104,7 +103,7 @@
 		
 		<tr>
 		  <td>
-            <s:submit value="確認"/>
+            <s:submit class="botton" value="確認"/>
           </td>
         </tr>
         

@@ -21,10 +21,10 @@
   padding: 0;
   line-height: 1.6;
   letter-spacing: 1px;
-  font-family: Verdana, Helvetica, sans-serif;
-  font-size: 12px;
+  font-size: 15px;
   color: #333;
-  background: #fff;
+  background: linear-gradient(to bottom, #ffffff, #87CEEB, #ffffff);
+  
   }
   
   table {
@@ -32,36 +32,35 @@
   margin: 0 auto;
   }
   
-  / * ========ecsite LAYOUT======== * /
+  / * ======== LAYOUT======== * /
   
   #top {
   width: 780px;
   margin: 30px auto;
-  border: 1px solid #333;
   }
   
-  #header {
-  width: 100%;
-  height: 80px;
-  color: white;
-  background-color: skyblue;
+  #top h1 {
+  margin-top: 80px;
   }
-
+  
   #main {
   width: 100%;
   height: 500px;
   text-align: center;
   }
 
-  #footer {
-  width: 100%;
-  height: 80px;
-  background-color: skyblue;
-  clear: both;
-  }
-
   #text-center {
   display: inline-block; text-align: center;
+  }
+  
+  .botton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  color: white;
+  background-color: blue;
   }
 
 </style>
@@ -80,7 +79,7 @@
     
     <div id= "text-center">
       <s:form action="HomeAction">
-        <s:submit value="学習を始める"/>
+        <s:submit class="botton" value="学習を始める"/>
       </s:form>
       
       <s:if test= "#session. login_user_id != null">
