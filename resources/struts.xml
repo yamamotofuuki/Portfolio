@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+
+<!-- 保存されているパッケージを宣言 -->
+<constant name="struts.devMode" value="true"/>
+<package name="com.diworksdev.portfolio.action" extends="struts-default">
+
+  <!--呼び出されるJavaクラスファイルと実行するメソッドを宣言  -->
+  
+  <!-- GoHomeAction -->
+  <action name= "GoHomeAction" class="com.diworksdev.portfolio.action.GoHomeAction" method="execute">
+    <result name="success">home.jsp</result>
+  </action>
+  
+  <!-- HomeAction -->
+  <action name="HomeAction" class="com.diworksdev.portfolio.action.HomeAction" method="execute">
+    <result name="login">login.jsp</result>
+    <result name="success">learning.jsp</result>
+  </action>
+  
+  <!-- LoginAction -->
+  <action name="LoginAction" class="com.diworksdev.portfolio.action.LoginAction" method="execute">
+    <result name="success">learning.jsp</result>
+    <result name="error">login.jsp</result>
+  </action>
+  
+  <!-- UserCreateAction -->
+  <action name="UserCreateAction" class="com.diworksdev.portfolio.action.UserCreateAction" method="execute">
+    <result name= "success">userCreate.jsp</result>
+  </action>
+  
+  <!-- UserCreateConfirmAction -->
+  <action name="UserCreateConfirmAction" class="com.diworksdev.portfolio.action.UserCreateConfirmAction" method="execute">
+    <result name="success">userCreateConfirm.jsp</result>
+    <result name="error">userCreate.jsp</result>
+  </action>
+  
+  <!-- UserCreateCompleteAction -->
+  <action name= "UserCreateCompleteAction" class="com.diworksdev.portfolio.action.UserCreateCompleteAction" method="execute">
+    <result name="success">userCreateComplete.jsp</result>
+  </action>
+  
+  <!-- LogoutAction -->
+  <action name="LogoutAction" class="com.diworksdev.portfolio.action.LogoutAction" method="execute">
+	<result name="success">home.jsp</result>
+  </action>
+  
+</package>
+</struts>
