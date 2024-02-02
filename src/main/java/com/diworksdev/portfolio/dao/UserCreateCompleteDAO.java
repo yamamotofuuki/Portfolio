@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import com.diworksdev.portfolio.util.DBConnector;
 import com.diworksdev.portfolio.util.DateUtil;
+import com.diworksdev.portfolio.util.PasswordHasher;
 
 public class UserCreateCompleteDAO {
 	
@@ -21,8 +22,11 @@ public class UserCreateCompleteDAO {
 		
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			
+			// パスワードをハッシュ化してデータベースに格納
+            String hashedPassword = PasswordHasher.hashPassword(loginPassword);
 	        
-	        preparedStatement.setString(1, loginPassword);
+	        preparedStatement.setString(1, hashedPassword);
 	        preparedStatement.setString(2, userName);
 	        preparedStatement.setString(3, dateUtil.getDate());
 	        
