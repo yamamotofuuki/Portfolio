@@ -23,9 +23,6 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 	    //String hashedPassword = PasswordHasher.hashPassword(loginPassword);
 	    //session.put("hashedPassword", hashedPassword);
 		
-		//DAOを経由して入力された内容をDBに登録
-		//userCreateCompleteDAO.cerateUser(loginPassword, userName);
-		
 		userCreateCompleteDAO.cerateUser(
 				session.get("loginPassword").toString(),
 				session.get("userName").toString());

@@ -23,7 +23,7 @@ public class UserCreateCompleteDAO {
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			
-			// パスワードをハッシュ化してデータベースに格納
+			// パスワード（loginPassword）をハッシュ化してDBに格納
             String hashedPassword = PasswordHasher.hashPassword(loginPassword);
 	        
 	        preparedStatement.setString(1, hashedPassword);
