@@ -19,10 +19,6 @@ public class UserCreateCompleteAction extends ActionSupport implements SessionAw
 
 	public String execute() throws SQLException{
 		
-		// パスワードをハッシュ化してセッションに格納
-	    //String hashedPassword = PasswordHasher.hashPassword(loginPassword);
-	    //session.put("hashedPassword", hashedPassword);
-		
 		userCreateCompleteDAO.cerateUser(
 				session.get("loginPassword").toString(),
 				session.get("userName").toString());
