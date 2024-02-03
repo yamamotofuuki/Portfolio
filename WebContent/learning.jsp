@@ -27,6 +27,11 @@
       document.querySelector('form[action="LearningAction"] input[name="learningContent"]').value = learningContent;
       document.querySelector('form[action="LearningAction"]').submit();
     }
+
+  function submitForm(learningContent) {
+      document.querySelector('#learningForm input[name="learningContent"]').value = learningContent;
+      document.querySelector('#learningForm').submit();
+  }
 </script>
 
 <style type="text/css">
@@ -95,14 +100,18 @@
   display: block;
   }
   
-  .accordion-content label {
-  text-align: left;
-  display: block;
-  cursor: pointer;
-  }
-  .accordion-content label:hover {
-  color: blue; /* カーソルが合わさったときの文字色 */
-  }
+  .button-none {
+   border: none; /* ボタンの枠を取り除く */
+   cursor: pointer;
+   display: flex;
+   font-size: 17px;
+   /*background-color: skygray*/
+   background-color: transparent;  /*ボタンの背景色 */
+   }
+
+  .button-none:hover {
+   color: blue; 
+   }
   
   
 </style>
@@ -120,9 +129,13 @@
       <div class="accordion-item">
         <div class="accordion-label" onclick="toggleAccordion(this)">決算に関する<span class="accordion-icon">▼</span></div>
         <div class="accordion-content">
-          <s:form action="LearningAction">
-            <label onclick="submitForm('確定申告書')">確定申告書</label><br>
-            <label onclick="submitForm('決算書')">決算書</label>
+          <s:form action="LearningAction" id="learningForm">
+          
+            <button type="submit" name="learningContent" value="確定申告書" class="button-none">確定申告書</button><br>
+            <button type="submit" name="learningContent" value="決算書" class="button-none">決算書</button><br>
+            <button type="submit" name="learningContent" value="貸借対照表" class="button-none">貸借対照表</button><br>
+            <button type="submit" name="learningContent" value="損益計算書" class="button-none">損益計算書</button>
+         
           </s:form>
         </div>
       </div>
@@ -130,31 +143,67 @@
       <div class="accordion-item">
         <div class="accordion-label" onclick="toggleAccordion(this)">会計全般に関する<span class="accordion-icon">▼</span></div>
         <div class="accordion-content">
+          <s:form action="LearningAction">
           
+            <button type="submit" name="learningContent" value="勘定科目" class="button-none">勘定科目</button><br>
+            <button type="submit" name="learningContent" value="総勘定元帳" class="button-none">総勘定元帳</button><br>
+            <button type="submit" name="learningContent" value="資本金" class="button-none">資本金</button><br>
+            <button type="submit" name="learningContent" value="固定資産" class="button-none">固定資産</button><br>
+            <button type="submit" name="learningContent" value="減価償却" class="button-none">減価償却</button><br>
+            <button type="submit" name="learningContent" value="振替伝票" class="button-none">振替伝票</button>
+            
+          </s:form>
         </div>
       </div>
       
       <div class="accordion-item">
         <div class="accordion-label" onclick="toggleAccordion(this)">勘定科目に関する<span class="accordion-icon">▼</span></div>
         <div class="accordion-content">
+          <s:form action="LearningAction">
           
+            <button type="submit" name="learningContent" value="売掛金" class="button-none">売掛金</button><br>
+            <button type="submit" name="learningContent" value="買掛金" class="button-none">買掛金</button><br>
+            <button type="submit" name="learningContent" value="事業主貸" class="button-none">事業主貸</button><br>
+            <button type="submit" name="learningContent" value="事業主借" class="button-none">事業主借</button><br>
+            <button type="submit" name="learningContent" value="役員貸付金" class="button-none">役員貸付金</button><br>
+            <button type="submit" name="learningContent" value="役員借入金" class="button-none">役員借入金</button>
+            
+          </s:form>
+        </div>
+      </div>
+      
+      <div class="accordion-item">
+        <div class="accordion-label" onclick="toggleAccordion(this)">税金に関する<span class="accordion-icon">▼</span></div>
+        <div class="accordion-content">
+          <s:form action="LearningAction">
+          
+            <button type="submit" name="learningContent" value="所得税" class="button-none">所得税</button><br>
+            <button type="submit" name="learningContent" value="消費税" class="button-none">消費税</button><br>
+            <button type="submit" name="learningContent" value="法人税" class="button-none">法人税</button><br>
+            <button type="submit" name="learningContent" value="法人住民税" class="button-none">法人住民税</button><br>
+            <button type="submit" name="learningContent" value="法人事業税" class="button-none">法人事業税</button>
+            
+          </s:form>
+        </div>
+      </div>
+      
+      <div class="accordion-item">
+        <div class="accordion-label" onclick="toggleAccordion(this)">その他<span class="accordion-icon">▼</span></div>
+        <div class="accordion-content">
+          <s:form action="LearningAction">
+          
+            <button type="submit" name="learningContent" value=インボイス制度とは" class="button-none">インボイス制度とは</button><br>
+            <button type="submit" name="learningContent" value="消費税" class="button-none">消費税</button><br>
+            <button type="submit" name="learningContent" value="法人税" class="button-none">法人税</button>
+            
+          </s:form>
         </div>
       </div>
     
     </div>
     
     <div>
-      <s:form action ="LearningAction">
-      
-        <!-- インボイスとはボタン -->
-         <s:submit name="learningContent" value="インボイスとは"/>
-    	
-    	 <!-- 消費税とはボタン -->
-    	 <s:submit name="learningContent" value="消費税とは"/>     
-        
-      </s:form>
-      
-      
+    
       <div>
         <p>トップに戻る場合は<a href='<s:url action="GoHomeAction"/>'>こちら</a></p>
         <p>お気に入り一覧は<a href='<s:url action="MyPageAction"/>'>こちら</a></p>
