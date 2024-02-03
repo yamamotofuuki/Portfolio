@@ -22,6 +22,11 @@
     var icon = label.querySelector('.accordion-icon');
     icon.textContent = item.classList.contains('active') ? '▲' : '▼';
   }
+
+  function submitForm(learningContent) {
+      document.querySelector('form[action="LearningAction"] input[name="learningContent"]').value = learningContent;
+      document.querySelector('form[action="LearningAction"]').submit();
+    }
 </script>
 
 <style type="text/css">
@@ -75,10 +80,11 @@
   background-color: #87CEEB;
   color: #fff;
   font-weight: bold;
+  font-size: 20px;
   display: flex;
   justify-content: space-between;
   }
-    
+  
   .accordion-content {
   display: none;
   padding: 10px;
@@ -87,6 +93,15 @@
 
   .accordion-item.active .accordion-content {
   display: block;
+  }
+  
+  .accordion-content label {
+  text-align: left;
+  display: block;
+  cursor: pointer;
+  }
+  .accordion-content label:hover {
+  color: blue; /* カーソルが合わさったときの文字色 */
   }
   
   
@@ -106,8 +121,8 @@
         <div class="accordion-label" onclick="toggleAccordion(this)">決算に関する<span class="accordion-icon">▼</span></div>
         <div class="accordion-content">
           <s:form action="LearningAction">
-            <s:submit name="learningContent" value="インボイスとは"/>
-            <s:submit name="learningContent" value="消費税とは"/>
+            <label onclick="submitForm('確定申告書')">確定申告書</label><br>
+            <label onclick="submitForm('決算書')">決算書</label>
           </s:form>
         </div>
       </div>
