@@ -105,7 +105,6 @@
    cursor: pointer;
    display: flex;
    font-size: 17px;
-   /*background-color: skygray*/
    background-color: transparent;  /*ボタンの背景色 */
    }
 

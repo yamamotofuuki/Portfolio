@@ -51,6 +51,21 @@
   margin-top: 70px;
   }
   
+  #main h3 {
+  text-align: left;
+  margin-left: 20px;
+  
+  }
+  
+  #main .box {
+  
+  max-width: 700px;
+  margin: 0 auto;
+  border: 1px solid transparent;
+  padding: 20px; 
+  box-sizing: border-box; /* ボーダーボックスモデル */
+  }
+  
 </style>
 <script type="text/javascript">
 	function submitAction(url) {
@@ -72,9 +87,9 @@
     </s:if>
 	
     <!-- 詳細情報を表示させる -->
-	<div>
+	<div class="box">
       <s:if test="detailInformation != null">
-        <h2><s:property value="detailInformation" /></h2>
+        <h3 style="white-space: pre-line;"><s:property value="detailInformation" /></h3>
       </s:if>
     </div>
     
