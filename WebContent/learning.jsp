@@ -180,7 +180,8 @@
             <button type="submit" name="learningContent" value="消費税" class="button-none">消費税</button><br>
             <button type="submit" name="learningContent" value="法人税" class="button-none">法人税</button><br>
             <button type="submit" name="learningContent" value="法人住民税" class="button-none">法人住民税</button><br>
-            <button type="submit" name="learningContent" value="法人事業税" class="button-none">法人事業税</button>
+            <button type="submit" name="learningContent" value="法人事業税" class="button-none">法人事業税</button><br>
+            <button type="submit" name="learningContent" value="法人税等" class="button-none">法人税等</button>
             
           </s:form>
         </div>
@@ -191,7 +192,7 @@
         <div class="accordion-content">
           <s:form action="LearningAction">
           
-            <button type="submit" name="learningContent" value=インボイス制度とは" class="button-none">インボイス制度とは</button><br>
+            <button type="submit" name="learningContent" value="インボイス制度とは" class="button-none">インボイス制度とは</button><br>
             <button type="submit" name="learningContent" value="消費税" class="button-none">消費税</button><br>
             <button type="submit" name="learningContent" value="法人税" class="button-none">法人税</button>
             
