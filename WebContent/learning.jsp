@@ -193,8 +193,9 @@
           <s:form action="LearningAction">
           
             <button type="submit" name="learningContent" value="インボイス制度とは" class="button-none">インボイス制度とは</button><br>
-            <button type="submit" name="learningContent" value="消費税" class="button-none">消費税</button><br>
-            <button type="submit" name="learningContent" value="法人税" class="button-none">法人税</button>
+            <button type="submit" name="learningContent" value="2割特例" class="button-none">2割特例（経過措置）</button><br>
+            <button type="submit" name="learningContent" value="少額特例" class="button-none">少額特例</button><br>
+            <button type="submit" name="learningContent" value="電子帳簿保存法" class="button-none">電子帳簿保存法</button>
             
           </s:form>
         </div>
