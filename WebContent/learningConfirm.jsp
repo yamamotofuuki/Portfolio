@@ -79,16 +79,18 @@ window.onload = function() {
     // ローカルストレージからお気に入りリストを取得する
     var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     
- // お気に入りリストが空でない場合は、各ボタンの状態を更新する
-    if (favorites.length > 0) {
-        favorites.forEach(function(item) {
-            var addToFavoritesButton = document.getElementById('addToFavoritesButton_' + item.selectedButton);
+ // 各ボタンの状態を更新する
+    favorites.forEach(function(item) {
+        var addToFavoritesButton = document.getElementById('addToFavoritesButton_' + item.selectedButton);
+        console.log("Button ID:", 'addToFavoritesButton_' + item.selectedButton);
+        console.log("Button Element:", addToFavoritesButton);
+        if (addToFavoritesButton) {
             addToFavoritesButton.value = "お気に入り解除";
             addToFavoritesButton.onclick = function() {
                 removeFromFavorites(item.selectedButton);
             };
-        });
-    }
+        }
+    });
 };
 
 	// お気に入り登録関数
@@ -130,7 +132,9 @@ window.onload = function() {
 	    
 	    // 指定されたselectedButtonを持つアイテムを検索して削除する
 	    favorites = favorites.filter(function(item) {
-	    	console.log("詳細取得！");
+	    	console.log("削除するボタンのID: ", selectedButtonValue);
+	        console.log("お気に入りリストの中のボタンのID: ", item.selectedButton);
+	        
 	        return item.selectedButtonValue !== selectedButtonValue;
 	    });
 
@@ -169,7 +173,7 @@ window.onload = function() {
       </s:if>
     </div>
     
-    <form  method="post" id="favoriteForm">
+    <form  method="post" id="addToFavoritesForm">
     
       <tr>
         <td>
