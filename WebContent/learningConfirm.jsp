@@ -72,6 +72,30 @@
 		$('form').attr('action', url);
 		$('form').submit();
 	}
+
+	// お気に入り登録関数
+	function addToFavorites(selectedButton, detailInformation) {
+	    // ローカルストレージから既存のお気に入りリストを取得する
+	    var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+	    console.log("addToFavorites()が呼び出されました")
+	    
+        // HTMLの該当する要素から値を取得
+        var selectedButtonValue = document.getElementById('selectedButton').innerText;
+        var detailInformationValue = document.getElementById('detailInformation').innerText;
+        console.log("詳細取得！");
+	    
+	    // お気に入りオブジェクトを作成してリストに追加する
+	    var favoriteItem = { selectedButton: selectedButtonValue, detailInformation: detailInformationValue };
+    	favorites.push(favoriteItem);
+	    console.log("お気に入り！")
+	    
+	    // 更新されたお気に入りリストをローカルストレージに保存する
+	    localStorage.setItem('favorites', JSON.stringify(favorites));
+	    console.log("保存！")
+	    
+	    alert('お気に入りに追加しました！');
+	}
+		
 </script>
 
 </head>
@@ -83,17 +107,17 @@
     
     <!-- ボタンによるメッセージを表示 -->
     <s:if test="selectedButton != null">
-        <h1>「<s:property value="selectedButton" />」</h1>
+        <h1 id="selectedButton">「<s:property value="selectedButton" />」</h1>
     </s:if>
 	
     <!-- 詳細情報を表示させる -->
 	<div class="box">
       <s:if test="detailInformation != null">
-        <h3 style="white-space: pre-line;"><s:property value="detailInformation" /></h3>
+        <h3 id="detailInformation" style="white-space: pre-line;"><s:property value="detailInformation" /></h3>
       </s:if>
     </div>
     
-    <form action="<s:url action='LearningConfirmAction'/>" method="post" id="favoriteForm">
+    <form  method="post" id="favoriteForm">
     
       <tr>
         <td>
@@ -101,7 +125,7 @@
         </td>
       
         <td>
-          <input type="submit" value="お気に入り登録"/>
+          <input type="button" id="addToFavoritesButton" value="お気に入り登録" onclick="addToFavorites('<s:property value="selectedButton" />', '<s:property value="detailInformation" />')"/>
 	    </td>
       
       </tr>
