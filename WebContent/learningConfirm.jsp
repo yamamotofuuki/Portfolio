@@ -125,7 +125,7 @@
         </td>
       
         <td>
-          <input type="button" id="addToFavoritesButton" value="お気に入り登録" onclick="addToFavorites('<s:property value="selectedButton" />', '<s:property value="detailInformation" />')"/>
+          <input type="button" id="addToFavoritesButton" value="お気に入り登録" onclick="addToFavorites()"/>
 	    </td>
       
       </tr>
