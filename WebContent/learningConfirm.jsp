@@ -68,13 +68,32 @@
   
 </style>
 <script type="text/javascript">
-	function submitAction(url) {
-		$('form').attr('action', url);
-		$('form').submit();
-	}
+
+function submitAction(url) {
+	$('form').attr('action', url);
+	$('form').submit();
+}
+
+//ページロード時に実行される関数
+window.onload = function() {
+    // ローカルストレージからお気に入りリストを取得する
+    var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    
+ // お気に入りリストが空でない場合は、各ボタンの状態を更新する
+    if (favorites.length > 0) {
+        favorites.forEach(function(item) {
+            var addToFavoritesButton = document.getElementById('addToFavoritesButton_' + item.selectedButton);
+            addToFavoritesButton.value = "お気に入り解除";
+            addToFavoritesButton.onclick = function() {
+                removeFromFavorites(item.selectedButton);
+            };
+        });
+    }
+};
 
 	// お気に入り登録関数
 	function addToFavorites(selectedButton, detailInformation) {
+	    
 	    // ローカルストレージから既存のお気に入りリストを取得する
 	    var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 	    console.log("addToFavorites()が呼び出されました")
@@ -86,14 +105,47 @@
 	    
 	    // お気に入りオブジェクトを作成してリストに追加する
 	    var favoriteItem = { selectedButton: selectedButtonValue, detailInformation: detailInformationValue };
-    	favorites.push(favoriteItem);
+	    favorites.push(favoriteItem);
 	    console.log("お気に入り！")
 	    
 	    // 更新されたお気に入りリストをローカルストレージに保存する
 	    localStorage.setItem('favorites', JSON.stringify(favorites));
 	    console.log("保存！")
 	    
+	    // ボタンを「お気に入り解除」に変更する
+	    var addToFavoritesButton = document.getElementById('addToFavoritesButton');
+	    addToFavoritesButton.value = "お気に入り解除";
+	    addToFavoritesButton.onclick = function() {
+	        removeFromFavorites(selectedButton);
+	    };
+	    
 	    alert('お気に入りに追加しました！');
+	}
+
+	// お気に入り解除関数
+	function removeFromFavorites(selectedButtonValue) {
+	    // ローカルストレージから既存のお気に入りリストを取得する
+	    var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+	    console.log("addToFavorites()が呼び出されました!")
+	    
+	    // 指定されたselectedButtonを持つアイテムを検索して削除する
+	    favorites = favorites.filter(function(item) {
+	    	console.log("詳細取得！");
+	        return item.selectedButtonValue !== selectedButtonValue;
+	    });
+
+	    // 更新されたお気に入りリストをローカルストレージに保存する
+	    localStorage.setItem('favorites', JSON.stringify(favorites));
+	    console.log("いる？");
+	    
+	    // ボタンを「お気に入り登録」に戻す
+	    var addToFavoritesButton = document.getElementById('addToFavoritesButton');
+	    addToFavoritesButton.value = "お気に入り登録";
+	    addToFavoritesButton.onclick = function() {
+	        addToFavorites(selectedButton, detailInformation);
+	    };
+	    
+	    alert('お気に入りから削除しました！');
 	}
 		
 </script>
