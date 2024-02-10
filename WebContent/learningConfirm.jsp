@@ -85,10 +85,21 @@ window.onload = function() {
         console.log("Button ID:", 'addToFavoritesButton_' + item.selectedButton);
         console.log("Button Element:", addToFavoritesButton);
         if (addToFavoritesButton) {
-            addToFavoritesButton.value = "お気に入り解除";
-            addToFavoritesButton.onclick = function() {
-                removeFromFavorites(item.selectedButton.replace(/"/g, ""));
-            };
+            // ローカルストレージのお気に入りリストに含まれているか確認する
+            var isFavorite = favorites.some(function(favoriteItem) {
+                return favoriteItem.selectedButton === item.selectedButton;
+            });
+            if (isFavorite) {
+                addToFavoritesButton.value = "お気に入り解除";
+                addToFavoritesButton.onclick = function() {
+                    removeFromFavorites(item.selectedButton.replace(/"/g, ""));
+                };
+            } else {
+                addToFavoritesButton.value = "お気に入り登録";
+                addToFavoritesButton.onclick = function() {
+                    addToFavorites(item.selectedButton.replace(/"/g, ""));
+                };
+            }
         }
     });
 };
@@ -146,7 +157,7 @@ window.onload = function() {
 	    var addToFavoritesButton = document.getElementById('addToFavoritesButton_' + selectedButtonValue.replace(/"/g, ""));
 	    addToFavoritesButton.value = "お気に入り登録";
 	    addToFavoritesButton.onclick = function() {
-	        addToFavorites(selectedButton, detailInformation);
+	        addToFavorites(selectedButtonValue);
 	    };
 	    
 	    alert('お気に入りから削除しました！');
@@ -164,6 +175,7 @@ window.onload = function() {
     <!-- ボタンによるメッセージを表示 -->
     <s:if test="selectedButton != null">
         <h1 id="selectedButton">「<s:property value="selectedButton" />」</h1>
+        
     </s:if>
 	
     <!-- 詳細情報を表示させる -->
