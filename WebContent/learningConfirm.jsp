@@ -76,6 +76,14 @@ function submitAction(url) {
 
 //ページロード時に実行される関数
 window.onload = function() {
+
+// 各ボタンの要素を取得
+	var addToFavoritesButton_確定申告書 = document.getElementById('addToFavoritesButton_確定申告書');
+	var addToFavoritesButton_決算書 = document.getElementById('addToFavoritesButton_決算書');
+	var addToFavoritesButton_貸借対照表 = document.getElementById('addToFavoritesButton_貸借対照表');
+	var addToFavoritesButton_損益計算書 = document.getElementById('addToFavoritesButton_損益計算書');
+	
+	
     // ローカルストレージからお気に入りリストを取得する
     var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     
@@ -112,6 +120,7 @@ window.onload = function() {
 	    console.log("addToFavorites()が呼び出されました")
 	    
         // HTMLの該当する要素から値を取得
+        var selectedButtonValue = "確定申告書"; // 仮の値
         var selectedButtonValue = selectedButton;
         var detailInformationValue = document.getElementById('detailInformation').innerText;
         console.log("詳細取得！");
@@ -186,6 +195,7 @@ window.onload = function() {
     </div>
     
     <form  method="post" id="addToFavoritesForm">
+    <div id="buttonContainer"></div>
     
       <tr>
         <td>
@@ -194,6 +204,10 @@ window.onload = function() {
       
         <td>
           <input type="button" id="addToFavoritesButton_確定申告書" value="お気に入り登録" onclick="addToFavorites('確定申告書')"/>
+          <input type="button" id="addToFavoritesButton_決算書" value="お気に入り登録" onclick="addToFavorites('決算書')"/>
+          <input type="button" id="addToFavoritesButton_貸借対照表" value="お気に入り登録" onclick="addToFavorites('貸借対照表')"/>
+          <input type="button" id="addToFavoritesButton_損益計算書" value="お気に入り登録" onclick="addToFavorites('損益計算書')"/>
+
 	    </td>
       
       </tr>
