@@ -115,7 +115,6 @@ function toggleFavorite(selectedButton) {
     }
 }
 
-
 	// お気に入り登録関数
 	function addToFavorites(selectedButton) {
 	    
@@ -137,13 +136,6 @@ function toggleFavorite(selectedButton) {
 	    localStorage.setItem('favorites', JSON.stringify(favorites));
 	    console.log("保存！")
 	    
-	    // ボタンを「お気に入り解除」に変更する
-	    var addToFavoritesButton = document.getElementById('addToFavoritesButton_' + selectedButton.replace(/"/g, ""));
-	    addToFavoritesButton.value = "お気に入り解除";
-	    addToFavoritesButton.onclick = function() {
-	        removeFromFavorites(selectedButton);
-	    };
-	    
 	    alert('お気に入りに追加しました！');
 	}
 
@@ -163,14 +155,7 @@ function toggleFavorite(selectedButton) {
 
 	    // 更新されたお気に入りリストをローカルストレージに保存する
 	    localStorage.setItem('favorites', JSON.stringify(favorites));
-	    console.log("いる？");
-	    
-	    // ボタンを「お気に入り登録」に戻す
-	    var addToFavoritesButton = document.getElementById('addToFavoritesButton_' + selectedButtonValue.replace(/"/g, ""));
-	    addToFavoritesButton.value = "お気に入り登録";
-	    addToFavoritesButton.onclick = function() {
-	        addToFavorites(selectedButtonValue);
-	    };
+	    console.log("削除！");
 	    
 	    alert('お気に入りから削除しました！');
 	}
@@ -205,7 +190,6 @@ function toggleFavorite(selectedButton) {
         </td>
       
         <div id="favoriteButtons"></div>
-      
       </tr>
       
     </form>
