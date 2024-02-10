@@ -51,10 +51,10 @@
     <result name="error">learning.jsp</result>
   </action>
   
-  <!-- LearningConfirmAction -->
-  <action name= "LearningConfirmAction" class="com.diworksdev.portfolio.action.LearningConfirmAction" method="execute">
-    <result name= "success">learningComplete.jsp</result>
-    <result name="error">learning.jsp</result>
+  <!-- MyPageAction -->
+  <action name="MyPageAction" class="com.diworksdev.portfolio.action.MyPageAction" method="execute">
+    <result name= "success">myPage.jsp</result>
+    <result name="error">home.jsp</result>
   </action>
   
   <!-- LogoutAction -->
