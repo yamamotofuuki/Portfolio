@@ -76,41 +76,45 @@ function submitAction(url) {
 
 //ページロード時に実行される関数
 window.onload = function() {
-
-// 各ボタンの要素を取得
-	var addToFavoritesButton_確定申告書 = document.getElementById('addToFavoritesButton_確定申告書');
-	var addToFavoritesButton_決算書 = document.getElementById('addToFavoritesButton_決算書');
-	var addToFavoritesButton_貸借対照表 = document.getElementById('addToFavoritesButton_貸借対照表');
-	var addToFavoritesButton_損益計算書 = document.getElementById('addToFavoritesButton_損益計算書');
-	
-	
     // ローカルストレージからお気に入りリストを取得する
     var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    
- // 各ボタンの状態を更新する
-    favorites.forEach(function(item) {
-        var addToFavoritesButton = document.getElementById('addToFavoritesButton_' + item.selectedButton.replace(/"/g, ""));
-        console.log("Button ID:", 'addToFavoritesButton_' + item.selectedButton);
-        console.log("Button Element:", addToFavoritesButton);
-        if (addToFavoritesButton) {
-            // ローカルストレージのお気に入りリストに含まれているか確認する
-            var isFavorite = favorites.some(function(favoriteItem) {
-                return favoriteItem.selectedButton === item.selectedButton;
-            });
-            if (isFavorite) {
-                addToFavoritesButton.value = "お気に入り解除";
-                addToFavoritesButton.onclick = function() {
-                    removeFromFavorites(item.selectedButton.replace(/"/g, ""));
-                };
-            } else {
-                addToFavoritesButton.value = "お気に入り登録";
-                addToFavoritesButton.onclick = function() {
-                    addToFavorites(item.selectedButton.replace(/"/g, ""));
-                };
-            }
-        }
-    });
+
+    // 選択された項目を取得する
+    var selectedButtonElement = document.getElementById('selectedButton');
+    var selectedButton = selectedButtonElement ? selectedButtonElement.textContent.replace('「', '').replace('」', '') : null;
+
+    // ボタンを動的に生成する
+    var favoriteButtonContainer = document.getElementById('favoriteButtons');
+
+    // 選択された項目に対応するボタンを生成
+    if (selectedButton) {
+        var button = document.createElement('input');
+        button.type = 'button';
+        button.value = favorites.some(function(favorite) { return favorite.selectedButton === selectedButton; }) ? 'お気に入り解除' : 'お気に入り登録';
+        button.onclick = function() {
+            toggleFavorite(selectedButton);
+        };
+
+        // 生成したボタンをコンテナに追加する
+        favoriteButtonContainer.appendChild(button);
+    }
 };
+
+//お気に入りの表示を切り替える関数
+function toggleFavorite(selectedButton) {
+    var selectedItem = document.getElementById('selectedItem');
+    var button = document.querySelector('#favoriteButtons input[type="button"]');
+
+    // ボタンの状態を切り替える
+    if (button.value === 'お気に入り登録') {
+        addToFavorites(selectedButton);
+        button.value = 'お気に入り解除';
+    } else {
+        removeFromFavorites(selectedButton);
+        button.value = 'お気に入り登録';
+    }
+}
+
 
 	// お気に入り登録関数
 	function addToFavorites(selectedButton) {
@@ -120,7 +124,6 @@ window.onload = function() {
 	    console.log("addToFavorites()が呼び出されました")
 	    
         // HTMLの該当する要素から値を取得
-        var selectedButtonValue = "確定申告書"; // 仮の値
         var selectedButtonValue = selectedButton;
         var detailInformationValue = document.getElementById('detailInformation').innerText;
         console.log("詳細取得！");
@@ -195,20 +198,13 @@ window.onload = function() {
     </div>
     
     <form  method="post" id="addToFavoritesForm">
-    <div id="buttonContainer"></div>
     
       <tr>
         <td>
           <input type="button" value="戻る" onclick="submitAction('HomeAction')"/>
         </td>
       
-        <td>
-          <input type="button" id="addToFavoritesButton_確定申告書" value="お気に入り登録" onclick="addToFavorites('確定申告書')"/>
-          <input type="button" id="addToFavoritesButton_決算書" value="お気に入り登録" onclick="addToFavorites('決算書')"/>
-          <input type="button" id="addToFavoritesButton_貸借対照表" value="お気に入り登録" onclick="addToFavorites('貸借対照表')"/>
-          <input type="button" id="addToFavoritesButton_損益計算書" value="お気に入り登録" onclick="addToFavorites('損益計算書')"/>
-
-	    </td>
+        <div id="favoriteButtons"></div>
       
       </tr>
       
