@@ -13,7 +13,7 @@
   <meta name="description" content=""/>
   <meta name="keywords" content=""/>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <title>BuyItemConfirm画面</title>
+  <title>学習コンテンツ詳細画面</title>
 
 <style type="text/css">
 / * ========TAG LAYOUT======== * /
@@ -81,27 +81,27 @@ window.onload = function() {
     
  // 各ボタンの状態を更新する
     favorites.forEach(function(item) {
-        var addToFavoritesButton = document.getElementById('addToFavoritesButton_' + item.selectedButton);
+        var addToFavoritesButton = document.getElementById('addToFavoritesButton_' + item.selectedButton.replace(/"/g, ""));
         console.log("Button ID:", 'addToFavoritesButton_' + item.selectedButton);
         console.log("Button Element:", addToFavoritesButton);
         if (addToFavoritesButton) {
             addToFavoritesButton.value = "お気に入り解除";
             addToFavoritesButton.onclick = function() {
-                removeFromFavorites(item.selectedButton);
+                removeFromFavorites(item.selectedButton.replace(/"/g, ""));
             };
         }
     });
 };
 
 	// お気に入り登録関数
-	function addToFavorites(selectedButton, detailInformation) {
+	function addToFavorites(selectedButton) {
 	    
 	    // ローカルストレージから既存のお気に入りリストを取得する
 	    var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 	    console.log("addToFavorites()が呼び出されました")
 	    
         // HTMLの該当する要素から値を取得
-        var selectedButtonValue = document.getElementById('selectedButton').innerText;
+        var selectedButtonValue = selectedButton;
         var detailInformationValue = document.getElementById('detailInformation').innerText;
         console.log("詳細取得！");
 	    
@@ -115,7 +115,7 @@ window.onload = function() {
 	    console.log("保存！")
 	    
 	    // ボタンを「お気に入り解除」に変更する
-	    var addToFavoritesButton = document.getElementById('addToFavoritesButton');
+	    var addToFavoritesButton = document.getElementById('addToFavoritesButton_' + selectedButton.replace(/"/g, ""));
 	    addToFavoritesButton.value = "お気に入り解除";
 	    addToFavoritesButton.onclick = function() {
 	        removeFromFavorites(selectedButton);
@@ -135,7 +135,7 @@ window.onload = function() {
 	    	console.log("削除するボタンのID: ", selectedButtonValue);
 	        console.log("お気に入りリストの中のボタンのID: ", item.selectedButton);
 	        
-	        return item.selectedButtonValue !== selectedButtonValue;
+	        return item.selectedButton !== selectedButtonValue;
 	    });
 
 	    // 更新されたお気に入りリストをローカルストレージに保存する
@@ -143,7 +143,7 @@ window.onload = function() {
 	    console.log("いる？");
 	    
 	    // ボタンを「お気に入り登録」に戻す
-	    var addToFavoritesButton = document.getElementById('addToFavoritesButton');
+	    var addToFavoritesButton = document.getElementById('addToFavoritesButton_' + selectedButtonValue.replace(/"/g, ""));
 	    addToFavoritesButton.value = "お気に入り登録";
 	    addToFavoritesButton.onclick = function() {
 	        addToFavorites(selectedButton, detailInformation);
@@ -181,7 +181,7 @@ window.onload = function() {
         </td>
       
         <td>
-          <input type="button" id="addToFavoritesButton" value="お気に入り登録" onclick="addToFavorites()"/>
+          <input type="button" id="addToFavoritesButton_確定申告書" value="お気に入り登録" onclick="addToFavorites('確定申告書')"/>
 	    </td>
       
       </tr>
