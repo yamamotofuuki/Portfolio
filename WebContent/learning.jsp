@@ -111,6 +111,21 @@
   .button-none:hover {
    color: blue; 
    }
+   
+   
+  #buttonContainer {
+  display: flex; /* リンク横並びにする */
+  justify-content: center; /* 水平方向の中央揃え */
+  }
+  
+  #buttonContainer a {
+  margin-right: 30px;/* リンクの間隔を調整する */
+  color: black;
+  }
+  
+  #buttonContainer a:hover{
+  color: blue;
+  }
   
   
 </style>
@@ -205,9 +220,16 @@
     
     <div>
     
-      <div>
-        <p>トップに戻る場合は<a href='<s:url action="GoHomeAction"/>'>こちら</a></p>
-        <p>お気に入り一覧は<a href='<s:url action="MyPageAction"/>'>こちら</a></p>
+      <div id="buttonContainer">
+      
+        <p><a href='<s:url action="GoHomeAction"/>'>トップに戻る</a></p>
+        <p><a href='<s:url action="MyPageAction"/>'>お気に入り一覧</a></p>
+        <p><a href='<s:url action="MyPageAction"/>'>アカウント管理</a></p>
+        
+        <s:if test= "#session. login_user_id != null">
+          <p><a href='<s:url action="LogoutAction"/>'>ログアウト</a></p>
+        </s:if>
+        
       </div>
       
     </div>
