@@ -66,6 +66,25 @@
   box-sizing: border-box; /* ボーダーボックスモデル */
   }
   
+  /* お気に入り登録ボタンのスタイル */
+  #favoriteButtons input[type="button"] {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  }
+  
+  #buttonContainer {
+  display: flex; /* ボタンを横並びにする */
+  justify-content: center; /* 水平方向の中央揃え */
+  }
+  
+  #addToFavoritesForm input[type="button"] {
+  margin-right: 10px; /* ボタン間の間隔 */
+  cursor: pointer;
+  }
+  
 </style>
 <script type="text/javascript">
 
@@ -90,10 +109,13 @@ window.onload = function() {
     if (selectedButton) {
         var button = document.createElement('input');
         button.type = 'button';
-        button.value = favorites.some(function(favorite) { return favorite.selectedButton === selectedButton; }) ? 'お気に入り解除' : 'お気に入り登録';
+        var isFavorite = favorites.some(function(favorite) { return favorite.selectedButton === selectedButton; }); button.value = isFavorite ? 'お気に入り解除' : 'お気に入り登録';
         button.onclick = function() {
             toggleFavorite(selectedButton);
         };
+
+     // ボタンの初期スタイルを設定
+        button.style.backgroundColor = isFavorite ? '#3f8fdf' : 'blue';
 
         // 生成したボタンをコンテナに追加する
         favoriteButtonContainer.appendChild(button);
@@ -109,9 +131,11 @@ function toggleFavorite(selectedButton) {
     if (button.value === 'お気に入り登録') {
         addToFavorites(selectedButton);
         button.value = 'お気に入り解除';
+        button.style.backgroundColor = '#3f8fdf';
     } else {
         removeFromFavorites(selectedButton);
         button.value = 'お気に入り登録';
+        button.style.backgroundColor = 'blue';
     }
 }
 
@@ -184,14 +208,11 @@ function toggleFavorite(selectedButton) {
     
     <form  method="post" id="addToFavoritesForm">
     
-      <tr>
-        <td>
-          <input type="button" value="戻る" onclick="submitAction('HomeAction')"/>
-        </td>
-      
+      <div id="buttonContainer">
+        <input type="button" value="戻る" onclick="submitAction('HomeAction')"/>
         <div id="favoriteButtons"></div>
-      </tr>
-      
+      </div>
+    
     </form>
     
     <div>
