@@ -68,6 +68,7 @@
   
   #main h1 {
   margin-top: 70px;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); /* テキストに影をつける */
   }
   
   .accordion {
