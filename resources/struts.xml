@@ -69,6 +69,12 @@
     <result name="error">account.jsp</result>
   </action>
   
+  <!-- UpdateCompleteAction -->
+  <action name="UpdateCompleteAction" class="com.diworksdev.portfolio.action.UpdateCompleteAction" method="execute">
+    <result name= "success">updateComplete.jsp</result>
+    <result name="error">updateConfirm.jsp</result>
+  </action>
+  
   <!-- LogoutAction -->
   <action name="LogoutAction" class="com.diworksdev.portfolio.action.LogoutAction" method="execute">
 	<result name="success">home.jsp</result>
