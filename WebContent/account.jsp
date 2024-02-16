@@ -48,21 +48,44 @@
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); /* テキストに影をつける */
   }
   
+  #loginform {
+  width: 500px;
+  margin: 30px auto;
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+  }
+  
+  .botton {
+  cursor: pointer;
+  }
+  
+  .botton1 {
+  cursor: pointer;
+  color: white;
+  background-color: red;
+  }
+  
   
 </style>
   
 </head>
 <body>
- 
-  <div id="main">
+ <div id="main">
+ <h1>アカウント管理</h1>
 
-    <h1>アカウント管理</h1>
-    
-    <!-- 取得したユーザー情報を表示 -->
-    <p>パスワード: <s:property value="account.password" /></p>
-    <p>ユーザー名: <s:property value="account.username" /></p>
-
+  <div id="loginform">
+  
+      <form action="UpdateConfirmAction" method="post">
+        <!-- 取得したユーザー情報を表示 -->
+        <p>パスワード: <input type="password" maxlength="10" name="loginPassword" pattern="^[a-zA-Z0-9]+$" placeholder="新しいパスワードを入力" /></p>
+        <p>ユーザー名: <input type="text" maxlength="10" name="userName" pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*" value="<s:property value='account.username' />" /></p>
+        <input type="submit" class="botton" value="編集" />
+        <input type="submit" class="botton1" value="削除" />
+      </form>
+  
   </div>
+ </div>
 
 </body>
 </html>
