@@ -57,6 +57,12 @@
     <result name="error">home.jsp</result>
   </action>
   
+  <!-- AccountAction -->
+  <action name="AccountAction" class="com.diworksdev.portfolio.action.AccountAction" method="execute">
+    <result name= "success">account.jsp</result>
+    <result name="error">myPage.jsp</result>
+  </action>
+  
   <!-- LogoutAction -->
   <action name="LogoutAction" class="com.diworksdev.portfolio.action.LogoutAction" method="execute">
 	<result name="success">home.jsp</result>

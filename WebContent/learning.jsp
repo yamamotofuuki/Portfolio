@@ -225,7 +225,7 @@
       
         <p><a href='<s:url action="GoHomeAction"/>'>トップに戻る</a></p>
         <p><a href='<s:url action="MyPageAction"/>'>お気に入り一覧</a></p>
-        <p><a href='<s:url action="MyPageAction"/>'>アカウント管理</a></p>
+        <p><a href='<s:url action="AccountAction"/>'>アカウント管理</a></p>
         
         <s:if test= "#session. login_user_id != null">
           <p><a href='<s:url action="LogoutAction"/>'>ログアウト</a></p>
