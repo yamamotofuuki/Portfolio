@@ -66,6 +66,12 @@
   background-color: red;
   }
   
+  .error-message {
+  color: red;
+  font-size: 13px;
+  margin-top: 5px;
+  }
+  
   
 </style>
   
@@ -76,19 +82,30 @@
 
   <div id="loginform">
   
-      <form action="UpdateConfirmAction" method="post">
+    <form action="UpdateConfirmAction" method="post">
+      
         <!-- 取得したユーザー情報を表示 -->
+        <s:if test="passwordErrorMessage != null && passwordErrorMessage != ''">
+          <div class="error-message">
+            <s:property value="passwordErrorMessage" escapeXml="false"/>
+          </div>
+        </s:if>
         <p>パスワード: <input type="password" maxlength="10" name="loginPassword" pattern="^[a-zA-Z0-9]+$" placeholder="新しいパスワードを入力" /></p>
+        
+        <s:if test="userNameErrorMessage != null && userNameErrorMessage != ''">
+          <div class="error-message">
+            <s:property value="userNameErrorMessage" escapeXml="false" />
+          </div>
+        </s:if>
         <p>ユーザー名: <input type="text" maxlength="10" name="userName" pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*" value="<%= session.getAttribute("login_user_name") %>" /></p>
+        
         <input type="submit" class="botton" value="編集" />
         <input type="submit" class="botton1" value="削除" />
-      </form>
+    
+    </form>
   
   </div>
  </div>
 
 </body>
 </html>
-
-
-
