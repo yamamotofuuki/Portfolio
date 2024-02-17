@@ -10,45 +10,34 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class UpdateCompleteAction extends ActionSupport implements SessionAware {
 	
-	private String loginPassword;
-	private String userName;
-	
-	public Map<String,Object> session;
-	
 	private UpdateCompleteDAO updateCompleteDAO = new UpdateCompleteDAO();
+	private Map<String,Object> session;
 	
 	@Override
 	public String execute(){
-		
+		System.out.println("UpdateCompleteAction execute() called");
 		if(session != null && session.containsKey("loginPassword") && session.containsKey("userName")) {
+			System.out.println("Session contains loginUser");
+			
+			String loginPassword = (String) session.get("loginPassword");
+			String userName = (String) session.get("userName");
+			System.out.println("LoginPassword: " + loginPassword);
+			System.out.println("UserName: " + userName);
 			
 			try {
-				updateCompleteDAO.updateUser(session.get("loginPassword").toString(), session.get("userName").toString());
+				updateCompleteDAO.updateUser(loginPassword, userName);
+				System.out.println("User update successful");
 				return SUCCESS;
 			}catch (SQLException e) {
 				e.printStackTrace();
+				System.out.println("SQL Exception occurred");
 				return ERROR;
 			}
+			
 		}else {
+			System.out.println("Session does not contain loginPassword or userName");
 			return ERROR;
 		}
-		
-	}
-	
-	public String getLoginPassword() {
-		return loginPassword;
-	}
-	
-	public void setLoginPassword(String loginPassword) {
-		this.loginPassword = loginPassword;
-	}
-	
-	public String getUserName() {
-		return userName;
-	}
-	
-	public void setUserName(String userName) {
-		this.userName = userName;
 	}
 	
 	@Override
