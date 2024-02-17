@@ -17,8 +17,21 @@ public class UpdateConfirmAction extends ActionSupport implements SessionAware {
     private String userNameErrorMessage;
     
     public String execute() {
+    	System.out.println("Session contents: " + session);
+
         
         String result = SUCCESS;
+        
+        if (result.equals(SUCCESS)) {
+            // 入力が正常ならセッションに値を格納
+            session.put("loginPassword", loginPassword);
+            session.put("userName", userName);
+            
+            // ログイン時に取得したユーザーIDをセッションに格納
+            String loginUserId = (String) session.get("login_user_id");
+            session.put("userId", loginUserId);
+        }
+
 
         // エラーメッセージを初期化
         passwordErrorMessage = null;

@@ -15,36 +15,28 @@ public class LoginDAO {
 	
 	//指定されたログインIDとパスワードに対するユーザー情報を取得
 	public LoginDTO getLoginUserInfo(String loginUserId, String loginPassword) {
-		
-		LoginDTO loginDTO = new LoginDTO();
-		
-		String sql = "SELECT * FROM webaccount where user_name=?";
-		
-		try {
-			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			
-			preparedStatement.setString(1,loginUserId);
-			ResultSet resultSet = preparedStatement.executeQuery();
-
-			// 結果が存在する場合、ユーザー情報をDTOに格納
-			if(resultSet.next()) {
-				
-				String hashedPassword = resultSet.getString("password");
-				//System.out.println("DBのハッシュ：" + hashedPassword);
-				//System.out.println("入力されたパスワード：" + loginPassword);
-				//System.out.println("照合結果：" + PasswordHasher.checkPassword(loginPassword, hashedPassword));
-	
-				// 比較したい平文の値（loginPassword）と、DBから取得したハッシュ化された値（hashedPassword）を照合
-                if (PasswordHasher.checkPassword(loginPassword, hashedPassword)) {
-                    loginDTO.setLoginId(resultSet.getString("user_name"));
-                    loginDTO.setLoginPassword(hashedPassword);
-                }
-				
-			}
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		return loginDTO;
+	    LoginDTO loginDTO = new LoginDTO();
+	    
+	    String sql = "SELECT id, user_name, password FROM webaccount WHERE user_name=?";
+	    
+	    try {
+	        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+	        preparedStatement.setString(1, loginUserId);
+	        ResultSet resultSet = preparedStatement.executeQuery();
+	        
+	        if (resultSet.next()) {
+	            String hashedPassword = resultSet.getString("password");
+	            if (PasswordHasher.checkPassword(loginPassword, hashedPassword)) {
+	                loginDTO.setLoginId(resultSet.getString("id")); // ユーザーIDをセット
+	                loginDTO.setLoginPassword(hashedPassword);
+	            }
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    
+	    return loginDTO;
 	}
+
 
 }

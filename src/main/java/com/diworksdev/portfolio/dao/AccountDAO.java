@@ -24,13 +24,14 @@ public class AccountDAO {
 
         try {
             connection = dbConnector.getConnection();
-            String sql = "SELECT * FROM webaccount where user_name=?";
+            String sql = "SELECT id, user_name, password FROM webaccount WHERE user_name=?";
             statement = connection.prepareStatement(sql);
             statement.setString(1, username);
             resultSet = statement.executeQuery();
 
          // ユーザー情報をDTOにセット
             if (resultSet.next()) {
+            	account.setUserId(resultSet.getInt("id"));
                 account.setUsername(resultSet.getString("user_name"));
                 account.setPassword(resultSet.getString("password"));
             }
