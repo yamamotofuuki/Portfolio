@@ -43,16 +43,8 @@
   background: linear-gradient(to bottom, #ffffff, #87CEEB, #ffffff);
   }
   
-  #main h3 {
-  margin-top: 75px;
-  }
-  
-  #Updateform {
-  width: 500px;
-  margin: 30px auto;
-  padding: 15px;
-  border: 1px solid black;
-  border-radius: 5px;
+  #main h2 {
+  margin-top: 76px;
   }
   
   .botton {
@@ -64,12 +56,17 @@
 </head>
 <body>
 
-  <h1>更新が完了しました。</h1>
+ <div id="main">
+  <div id="top">
+    <h2>更新が完了しました。</h2>
+  </div>
   
-  <s:form action="LoginAction">
-    <input type="submit" class="botton" value="完了" />
-  </s:form>
-
+  <div>
+    <s:form action="LoginAction">
+      <input type="submit" class="botton" value="完了" />
+    </s:form>
+  </div>
+ </div>
 
 </body>
 </html>

@@ -4,6 +4,7 @@ public class LoginDTO {
 	
 	private String loginId;
 	private String loginPassword;
+	private String userName;
 	
 	public String getLoginId() {
 		return loginId;
@@ -19,6 +20,14 @@ public class LoginDTO {
 	
 	public void setLoginPassword(String loginPassword) {
 		this.loginPassword = loginPassword;
+	}
+	
+	public String getUserName() {
+		return userName;
+	}
+	
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	
 }
