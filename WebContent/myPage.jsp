@@ -113,15 +113,24 @@
   </div>
   
   <script type="text/javascript">
+
+  //ログインユーザーのIDを取得
+  var loginUserId = '<%= session.getAttribute("login_user_id") %>';
+
 	// ローカルストレージからお気に入りリストを取得する
 	var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+	// ログインユーザーのお気に入りのみをフィルタリングする
+	var filteredFavorites = favorites.filter(function(favorite) {
+		return favorite.LoginUserId === loginUserId;
+	});
 	
 	// お気に入りリストを表示する
 	var favoritesList = document.getElementById('favoritesList');
 
 	// お気に入りリストが存在する場合
 	if (favoritesList) {
-		favorites.forEach(function(favorite) {
+		filteredFavorites.forEach(function(favorite) {
 		    var listItem = document.createElement('li');
 		    var link = document.createElement('a');
 		    link.textContent = favorite.selectedButton;
@@ -132,7 +141,7 @@
 		});
 	}
 
-	if (favorites.length === 0) {
+	if (filteredFavorites.length === 0) {
 	    var noFavoritesMessage = document.createElement('li');
 	    noFavoritesMessage.textContent = 'お気に入りはありません';
 	    favoritesList.appendChild(noFavoritesMessage);

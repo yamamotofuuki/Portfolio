@@ -146,13 +146,16 @@ function toggleFavorite(selectedButton) {
 	    var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 	    console.log("addToFavorites()が呼び出されました")
 	    
+	    // ユーザーIDを取得する
+	    var LoginUserId = getLoginUserId();
+	    
         // HTMLの該当する要素から値を取得
         var selectedButtonValue = selectedButton;
         var detailInformationValue = document.getElementById('detailInformation').innerText;
         console.log("詳細取得！");
 	    
 	    // お気に入りオブジェクトを作成してリストに追加する
-	    var favoriteItem = { selectedButton: selectedButtonValue, detailInformation: detailInformationValue };
+	    var favoriteItem = { LoginUserId: LoginUserId, selectedButton: selectedButtonValue, detailInformation: detailInformationValue };
 	    favorites.push(favoriteItem);
 	    console.log("お気に入り！")
 	    
@@ -162,7 +165,12 @@ function toggleFavorite(selectedButton) {
 	    
 	    alert('お気に入りに追加しました！');
 	}
-
+	
+	function getLoginUserId() {
+	    // サーバーサイドからセッションに格納されたユーザーIDを取得する
+	    return '<%= session.getAttribute("login_user_id") %>'; // セッションに格納されたユーザーIDを取得して返す
+	}
+	
 	// お気に入り解除関数
 	function removeFromFavorites(selectedButtonValue) {
 	    // ローカルストレージから既存のお気に入りリストを取得する
