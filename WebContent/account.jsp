@@ -14,6 +14,12 @@
   <meta name="keywords" content=""/>
   <title>アカウント管理画面</title>
   
+<script>
+
+function changeAction(action) {
+	document.getElementById('accountForm').action = action;
+}
+
 </script>
 
 <style type="text/css">
@@ -82,7 +88,7 @@
 
   <div id="loginform">
   
-    <form action="UpdateConfirmAction" method="post">
+    <form id="accountForm" method="post">
       
         <!-- 取得したユーザー情報を表示 -->
         <s:if test="passwordErrorMessage != null && passwordErrorMessage != ''">
@@ -99,8 +105,8 @@
         </s:if>
         <p>ユーザー名: <input type="text" maxlength="10" name="userName" pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*" value="<%= session.getAttribute("login_user_name") %>" /></p>
         
-        <input type="submit" class="botton" value="編集" />
-        <input type="submit" class="botton1" value="削除" />
+        <input type="submit" class="botton" value="編集" onclick="changeAction('UpdateConfirmAction')" />
+        <input type="submit" class="botton1" value="削除" onclick="changeAction('DeleteComfirmAction')" />
     
     </form>
   
