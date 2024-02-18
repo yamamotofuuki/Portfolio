@@ -62,14 +62,39 @@ function changeAction(action) {
   border-radius: 5px;
   }
   
+  .button-container {
+  display: flex;
+  align-items: center; /* ボタンを中央揃え */
+  }
+  
+  .button-group {
+   margin-left: 50px; /* ボタングループを右端に寄せる */
+   }
+   
+   .back{
+   margin-left: 190px; /* バックボタンを右端に寄せる */
+   }
+  
   .botton {
   cursor: pointer;
   }
   
   .botton1 {
+  padding: 5px 10px;
+  cursor: pointer;
+  color: white;
+  background-color: blue;
+  border-radius: 5px;
+  border: none;
+  }
+  
+  .botton2 {
+  padding: 5px 10px;
   cursor: pointer;
   color: white;
   background-color: red;
+  border-radius: 5px;
+  border: none;
   }
   
   .error-message {
@@ -105,8 +130,16 @@ function changeAction(action) {
         </s:if>
         <p>ユーザー名: <input type="text" maxlength="10" name="userName" pattern="[\u4E00-\u9FFF\u3040-\u309Fー]*" value="<%= session.getAttribute("login_user_name") %>" /></p>
         
-        <input type="submit" class="botton" value="編集" onclick="changeAction('UpdateConfirmAction')" />
-        <input type="submit" class="botton1" value="削除" onclick="changeAction('DeleteComfirmAction')" />
+        <div class="button-container">
+          <div class="back">
+            <button type="button" class="botton" onclick="history.back();">戻る</button>
+          </div>
+        
+          <div class="button-group">
+            <input type="submit" class="botton1" value="編集" onclick="changeAction('UpdateConfirmAction')" />
+            <input type="submit" class="botton2" value="削除" onclick="changeAction('DeleteComfirmAction')" />
+          </div>
+        </div>
     
     </form>
   

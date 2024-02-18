@@ -60,7 +60,16 @@
   cursor: pointer;
   display: flex;
   justify-content: space-between; /* ボタンを横に均等に配置 */
-  }  
+  }
+  
+  .botton1 {
+  padding: 3px 10px;
+  cursor: pointer;
+  color: white;
+  background-color: red;
+  border-radius: 5px;
+  border: none;
+  }
   
 </style>
   
@@ -95,7 +104,7 @@
        
       <tr>
         <td><button type="button" class="botton" onclick="history.back();">戻る</button></td>
-        <td><input type="submit" class="botton" value="はい" /></td>
+        <td><input type="submit" class="botton1" value="はい" /></td>
       </tr>
     </table>
     
