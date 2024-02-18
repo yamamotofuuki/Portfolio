@@ -23,6 +23,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		// ユーザーが入力したIDとハッシュ化されたPWに基づくユーザー情報を取得しセッションに格納
 		LoginDTO loginDTO = loginDAO.getLoginUserInfo(loginUserId, loginPassword);
 		session.put("loginUser",loginDTO);
+		session.put("loginPassword", loginPassword); // 入力したパスワードをセッションに格納
 		//System.out.println("データベースから取得したハッシュ値: " + loginDTO.getLoginPassword());
 		
 		//ログイン認証が成功した場合、ユーザーIDをセッションに格納

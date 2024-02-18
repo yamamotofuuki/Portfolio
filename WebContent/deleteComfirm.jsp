@@ -43,7 +43,8 @@
   background: linear-gradient(to bottom, #ffffff, #87CEEB, #ffffff);
   }
   
-  #main h3 {
+  #main h2 {
+  color: red;
   margin-top: 75px;
   }
   
@@ -68,7 +69,7 @@
 
   <div id="main">
     <div id="top">
-      <h3>本当にアカウントを削除しますか？</h3>
+      <h2>本当にアカウントを削除しますか？</h2>
     </div>
     
     <div id="Deleteform">
@@ -76,9 +77,15 @@
     <s:form action="DeleteCompleteAction">
     
     <table>
+    
       <tr>
         <td><label>パスワード:</label></td>
-        <td id="passwordField"><s:property value="loginPassword" escapeXml="false"/></td>
+        <td>
+          <s:if test="#session['loginPassword'] != null">
+            <s:set var="maskedPassword" value="'*****'"/> <!-- パスワードをマスキング -->
+            <s:property value="#maskedPassword" />
+          </s:if>
+        </td>
       </tr>
       
       <tr>
