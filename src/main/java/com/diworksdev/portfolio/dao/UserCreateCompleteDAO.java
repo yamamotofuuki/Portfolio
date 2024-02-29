@@ -39,25 +39,27 @@ public class UserCreateCompleteDAO {
             connection.commit();
             
 		}catch (SQLException e) {
-            // エラーが発生した場合はロールバック
-            try {
-                if (connection != null) {
-                    connection.rollback();
-                }
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-            e.printStackTrace();
-        } finally {
-            
-            try {
-                if (connection != null) {
-                    connection.setAutoCommit(true); 
-                    connection.close();
-                }
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
+	        // エラーが発生した場合はロールバック
+	        try {
+	            if (connection != null) {
+	                connection.rollback();
+	            }
+	        } catch (SQLException ex) {
+	            ex.printStackTrace();
+	        }
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (connection != null) {
+	                if (!connection.getAutoCommit()) { 
+	                    connection.rollback();
+	                }
+	                connection.setAutoCommit(true);
+	                connection.close(); // コネクションをクローズ
+	            }
+	        } catch (SQLException ex) {
+	            ex.printStackTrace();
+	        }
         }
 	}
 }
