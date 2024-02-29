@@ -36,7 +36,7 @@ public class UserCreateCompleteDAO {
 	        preparedStatement.setString(2, userName);
 	        preparedStatement.setString(3, dateUtil.getDate());
 	        
-	        preparedStatement.execute();
+	        preparedStatement.executeUpdate();
 		}catch (SQLException e) {
             // SQL例外の詳細なログ
             System.err.println("SQL Exception occurred: " + e.getMessage());
