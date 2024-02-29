@@ -7,22 +7,47 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnector {
-    public static Connection getConnection() {
-        Connection connection = null;
-        try {
-            URI dbUri = new URI(System.getenv("DATABASE_URL"));
-
-            String username = dbUri.getUserInfo().split(":")[0];
-            String password = dbUri.getUserInfo().split(":")[1];
-            String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
-
-            connection = DriverManager.getConnection(dbUrl, username, password);
-            System.out.println("Connected to the database.");
-        } catch (URISyntaxException e) {
-            System.out.println("URISyntaxException: " + e.getMessage());
-        } catch (SQLException e) {
-            System.out.println("SQLException: " + e.getMessage());
-        }
-        return connection;
-    }
+	
+	/**
+	 * JDBC ドライバー名
+	 */
+	private static String driverName = "org.postgresql.Driver";
+	
+	/**
+	 * データベース接続 URL
+	 */
+	private static String url;
+	
+	/**
+	 * データベース接続ユーザ名・パスワード
+	 */
+	private static String user;
+	private static String password;
+	
+	static {
+		try {
+			// HerokuのDATABASE_URLから接続情報を取得
+			URI dbUri = new URI(System.getenv("DATABASE_URL"));
+			user = dbUri.getUserInfo().split(":")[0];
+			password = dbUri.getUserInfo().split(":")[1];
+			url = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+			}
+	}
+	
+	public Connection getConnection() {
+		Connection con = null;
+		
+		try {
+			Class.forName(driverName);
+			con = (Connection) DriverManager.getConnection(url,user,password);
+		}catch(ClassNotFoundException e ) {
+			e.printStackTrace();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return con;
+	}
+	
 }

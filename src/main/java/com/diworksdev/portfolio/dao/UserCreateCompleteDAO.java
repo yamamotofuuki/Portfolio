@@ -25,13 +25,23 @@ public class UserCreateCompleteDAO {
 			
 			// パスワード（loginPassword）をハッシュ化してDBに格納
             String hashedPassword = PasswordHasher.hashPassword(loginPassword);
+            
+         // ログ出力
+            System.out.println("Hashed password: " + hashedPassword);
+            System.out.println("User name: " + userName);
+            System.out.println("Insert date: " + dateUtil.getDate());
+            System.out.println("SQL query: " + sql);
 	        
 	        preparedStatement.setString(1, hashedPassword);
 	        preparedStatement.setString(2, userName);
 	        preparedStatement.setString(3, dateUtil.getDate());
 	        
 	        preparedStatement.execute();
-		}catch(Exception e) {
+		}catch (SQLException e) {
+            // SQL例外の詳細なログ
+            System.err.println("SQL Exception occurred: " + e.getMessage());
+            e.printStackTrace();
+        } catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 			connection.close();
