@@ -8,18 +8,18 @@ public class DBConnector {
 	/**
 	 * JDBC ドライバー名
 	 */
-	private static String driverName = "com.mysql.cj.jdbc.Driver";
+	private static String driverName = "org.postgresql.Driver";
 	
 	/**
 	 * データベース接続 URL
 	 */
-	private static String url = "jdbc:mysql://localhost/portfolio?autoReconnect=true&useSSL=false";
+	private static String url = System.getenv("JDBC_DATABASE_URL");
 	
 	/**
 	 * データベース接続ユーザ名・パスワード
 	 */
-	private static String user = "root";
-	private static String password = "mysql";
+	private static String user = System.getenv("DB_USER");
+	private static String password = System.getenv("DB_PASSWORD");
 	
 	public Connection getConnection() {
 		Connection con = null;
