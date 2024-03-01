@@ -20,12 +20,7 @@
       <artifactId>jbcrypt</artifactId>
       <version>0.4</version>
     </dependency>
-    <!-- PostgreSQLドライバーの依存関係-->
-    <dependency>
-      <groupId>org.postgresql</groupId>
-      <artifactId>postgresql</artifactId>
-      <version>42.7.2</version>
-    </dependency>
+    
   </dependencies>
   
   <!-- 統合されたビルド設定 -->

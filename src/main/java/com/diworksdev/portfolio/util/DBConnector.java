@@ -9,11 +9,6 @@ import java.sql.SQLException;
 public class DBConnector {
 	
 	/**
-	 * JDBC ドライバー名
-	 */
-	private static String driverName = "org.postgresql.Driver";
-	
-	/**
 	 * データベース接続 URL
 	 */
 	private static String url;
@@ -33,18 +28,15 @@ public class DBConnector {
 			url = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
-			}
+		}
 	}
 	
 	public Connection getConnection() {
 		Connection con = null;
 		
 		try {
-			Class.forName(driverName);
-			con = (Connection) DriverManager.getConnection(url,user,password);
-		}catch(ClassNotFoundException e ) {
-			e.printStackTrace();
-		}catch(SQLException e) {
+			con = DriverManager.getConnection(url, user, password);
+		} catch(SQLException e) {
 			e.printStackTrace();
 		}
 		return con;
