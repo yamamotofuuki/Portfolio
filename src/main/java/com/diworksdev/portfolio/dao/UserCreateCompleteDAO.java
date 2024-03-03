@@ -12,7 +12,7 @@ public class UserCreateCompleteDAO {
 	
 	private DBConnector dbConnector = new DBConnector();
 	
-	private Connection connection = dbConnector.getConnection();
+	private Connection connection;
 	
 	private DateUtil dateUtil = new DateUtil();
 	
@@ -21,6 +21,17 @@ public class UserCreateCompleteDAO {
 	public void cerateUser(String loginPassword, String userName) throws SQLException{
 		
 		try {
+			// コネクションを取得
+            connection = dbConnector.getConnection();
+            
+            // コネクションがnullでないことを確認
+            if (connection != null) {
+                System.out.println("Database connection established successfully.");
+            } else {
+                System.out.println("Failed to establish database connection.");
+                return; // コネクションがnullの場合は処理を終了
+            }
+			
 			// トランザクション開始
             connection.setAutoCommit(false);
 			

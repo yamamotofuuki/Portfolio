@@ -25,8 +25,7 @@ public class DBConnector {
 			URI dbUri = new URI(System.getenv("DATABASE_URL"));
 			user = dbUri.getUserInfo().split(":")[0];
 			password = dbUri.getUserInfo().split(":")[1];
-			url = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() +
-	                  "?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
+			url = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
