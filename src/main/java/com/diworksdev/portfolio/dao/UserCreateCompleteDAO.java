@@ -3,6 +3,7 @@ package com.diworksdev.portfolio.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 import com.diworksdev.portfolio.util.DBConnector;
 import com.diworksdev.portfolio.util.DateUtil;
@@ -42,12 +43,11 @@ public class UserCreateCompleteDAO {
             
 	        preparedStatement.setString(1, hashedPassword);
 	        preparedStatement.setString(2, userName);
-	        preparedStatement.setString(3, dateUtil.getDate());
+	        preparedStatement.setTimestamp(3, Timestamp.valueOf(dateUtil.getDate())); // Timestamp型に変換
 	        
 	        System.out.println("Login password: " + loginPassword);
 	        System.out.println("User name: " + userName);
 	        System.out.println("Insert date: " + dateUtil.getDate());
-
 	        
 	        preparedStatement.executeUpdate();
 	        
