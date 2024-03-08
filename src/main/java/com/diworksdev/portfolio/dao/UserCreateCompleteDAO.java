@@ -43,6 +43,7 @@ public class UserCreateCompleteDAO {
             
 	        preparedStatement.setString(1, hashedPassword);
 	        preparedStatement.setString(2, userName);
+	        //preparedStatement.setString(3, dateUtil.getDate());
 	        preparedStatement.setTimestamp(3, Timestamp.valueOf(dateUtil.getDate())); // Timestamp型に変換
 	        
 	        System.out.println("Login password: " + loginPassword);

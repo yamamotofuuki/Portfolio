@@ -20,7 +20,8 @@ public class DeleteCompleteDAO {
 			conn = dbConnector.getConnection();
 			String sql = "DELETE FROM webaccount WHERE id=?";
 			preparedStatement = conn.prepareStatement(sql);
-			preparedStatement.setString(1, userId);
+			//preparedStatement.setString(1, userId);
+			preparedStatement.setInt(1, Integer.parseInt(userId));//文字列型を整数型に変更
 			int rowsDeleted = preparedStatement.executeUpdate();
 			
 			if (rowsDeleted > 0) {

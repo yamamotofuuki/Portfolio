@@ -3,6 +3,7 @@ package com.diworksdev.portfolio.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 import com.diworksdev.portfolio.util.DBConnector;
 import com.diworksdev.portfolio.util.DateUtil;
@@ -24,7 +25,8 @@ public class UpdateCompleteDAO {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, hashedPassword); // パスワードを更新
 			preparedStatement.setString(2, userName); // ユーザー名を更新
-			preparedStatement.setString(3, dateUtil.getDate());
+			//preparedStatement.setString(3, dateUtil.getDate());
+			preparedStatement.setTimestamp(3, Timestamp.valueOf(dateUtil.getDate())); // Timestamp型に変換
 			preparedStatement.setInt(4, userId); // 更新対象のユーザーIDをWHERE句に指定
 			
 			preparedStatement.executeUpdate();
