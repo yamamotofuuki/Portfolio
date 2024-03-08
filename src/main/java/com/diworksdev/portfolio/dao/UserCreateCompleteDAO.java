@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import com.diworksdev.portfolio.util.DBConnector;
+import com.diworksdev.portfolio.util.DateUtil;
 import com.diworksdev.portfolio.util.PasswordHasher;
 
 public class UserCreateCompleteDAO {
@@ -12,6 +13,8 @@ public class UserCreateCompleteDAO {
 	private DBConnector dbConnector = new DBConnector();
 	
 	private Connection connection;
+	
+	private DateUtil dateUtil = new DateUtil();
 	
 	private String sql = "INSERT INTO webaccount (password,user_name,insert_date) VALUES(?,?,?)";
 	
@@ -39,6 +42,12 @@ public class UserCreateCompleteDAO {
             
 	        preparedStatement.setString(1, hashedPassword);
 	        preparedStatement.setString(2, userName);
+	        preparedStatement.setString(3, dateUtil.getDate());
+	        
+	        System.out.println("Login password: " + loginPassword);
+	        System.out.println("User name: " + userName);
+	        System.out.println("Insert date: " + dateUtil.getDate());
+
 	        
 	        preparedStatement.executeUpdate();
 	        
