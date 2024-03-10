@@ -104,6 +104,7 @@
   .button-none {
    border: none; /* ボタンの枠を取り除く */
    cursor: pointer;
+   color: black;
    display: flex;
    font-size: 17px;
    background-color: transparent;  /*ボタンの背景色 */

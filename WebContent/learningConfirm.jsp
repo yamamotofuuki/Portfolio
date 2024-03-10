@@ -12,7 +12,7 @@
   <meta http-equiv="imagetoolbar" content="no"/>
   <meta name="description" content=""/>
   <meta name="keywords" content=""/>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <title>学習コンテンツ詳細画面</title>
 
 <style type="text/css">
