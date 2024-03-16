@@ -144,7 +144,7 @@ function toggleFavorite(selectedButton) {
 	    
 	    // ローカルストレージから既存のお気に入りリストを取得する
 	    var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-	    console.log("addToFavorites()が呼び出されました")
+	    //console.log("addToFavorites()が呼び出されました")
 	    
 	    // ユーザーIDを取得する
 	    var LoginUserId = getLoginUserId();
@@ -152,16 +152,16 @@ function toggleFavorite(selectedButton) {
         // HTMLの該当する要素から値を取得
         var selectedButtonValue = selectedButton;
         var detailInformationValue = document.getElementById('detailInformation').innerText;
-        console.log("詳細取得！");
+        //console.log("詳細取得！");
 	    
 	    // お気に入りオブジェクトを作成してリストに追加する
 	    var favoriteItem = { LoginUserId: LoginUserId, selectedButton: selectedButtonValue, detailInformation: detailInformationValue };
 	    favorites.push(favoriteItem);
-	    console.log("お気に入り！")
+	    //console.log("お気に入り！")
 	    
 	    // 更新されたお気に入りリストをローカルストレージに保存する
 	    localStorage.setItem('favorites', JSON.stringify(favorites));
-	    console.log("保存！")
+	    //console.log("保存！")
 	    
 	    alert('お気に入りに追加しました！');
 	}
@@ -175,19 +175,19 @@ function toggleFavorite(selectedButton) {
 	function removeFromFavorites(selectedButtonValue) {
 	    // ローカルストレージから既存のお気に入りリストを取得する
 	    var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-	    console.log("addToFavorites()が呼び出されました!")
+	    //console.log("addToFavorites()が呼び出されました!")
 	    
 	    // 指定されたselectedButtonを持つアイテムを検索して削除する
 	    favorites = favorites.filter(function(item) {
-	    	console.log("削除するボタンのID: ", selectedButtonValue);
-	        console.log("お気に入りリストの中のボタンのID: ", item.selectedButton);
+	    	//console.log("削除するボタンのID: ", selectedButtonValue);
+	        //console.log("お気に入りリストの中のボタンのID: ", item.selectedButton);
 	        
 	        return item.selectedButton !== selectedButtonValue;
 	    });
 
 	    // 更新されたお気に入りリストをローカルストレージに保存する
 	    localStorage.setItem('favorites', JSON.stringify(favorites));
-	    console.log("削除！");
+	    //console.log("削除！");
 	    
 	    alert('お気に入りから削除しました！');
 	}
