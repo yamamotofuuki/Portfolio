@@ -50,6 +50,7 @@ function changeAction(action) {
   }
   
   #main h1 {
+  font-size: 40px;
   margin-top: 70px;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); /* テキストに影をつける */
   }
@@ -103,6 +104,10 @@ function changeAction(action) {
   margin-top: 5px;
   }
   
+  #image img {
+  width: 120px;
+  margin-top: 20px;
+  }
   
 </style>
   
@@ -140,10 +145,20 @@ function changeAction(action) {
             <input type="submit" class="botton2" value="削除" onclick="changeAction('DeleteComfirmAction')" />
           </div>
         </div>
-    
+        
     </form>
   
   </div>
+  
+  <!-- 画像 -->
+  <div id="image">
+    <img src="image/tanzaku-kaki-hiyoko.png" alt="tanzaku-kaki-hiyoko">
+  </div>
+        
+  <div id="text">
+    編集～♪間違えて削除しないように...っと
+  </div>
+ 
  </div>
 
 </body>

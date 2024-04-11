@@ -71,6 +71,10 @@
   border: none;
   }
   
+  #image img {
+  width: 120px;
+  }
+  
 </style>
   
 </head>
@@ -110,6 +114,11 @@
     
     </s:form>
     
+    </div>
+    
+    <!-- 画像 -->
+    <div id="image">
+      <img src="image/pie.png" alt="pie">
     </div>
     
   </div>

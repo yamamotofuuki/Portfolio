@@ -67,6 +67,7 @@
   }
   
   #main h1 {
+  font-size: 40px;
   margin-top: 70px;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); /* テキストに影をつける */
   }
@@ -116,6 +117,7 @@
    
    
   #buttonContainer {
+  font-size: 18px;
   display: flex; /* リンク横並びにする */
   justify-content: center; /* 水平方向の中央揃え */
   }
@@ -126,9 +128,13 @@
   }
   
   #buttonContainer a:hover{
+  font-size: 19px;
   color: blue;
   }
   
+  #image img {
+  width: 120px;
+  }
   
 </style>
 </head>
@@ -136,9 +142,19 @@
 <body>
   
   <div id="main">
+      
     <div id="top">
-      <h1>～学習内容を選択して下さい～</h1>
+      <h1>学習内容を選択して下さい</h1>
     </div>
+    
+    <!-- 画像１ -->
+      <div id="image">
+        <img src="image/pcgatsugatsu.png" alt="pcgatsugatsu">
+      </div>
+      
+      <div id="text">
+        選択して用語をクリック～♪
+      </div>
     
     <div class="accordion">
     

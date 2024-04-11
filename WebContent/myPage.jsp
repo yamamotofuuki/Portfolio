@@ -45,6 +45,7 @@
   }
   
   #top h1 {
+  font-size: 40px;
   margin-top: 80px;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); /* テキストに影をつける */
   }
@@ -89,6 +90,18 @@
   #text-right a:hover{
   color: blue;
   }
+  
+  #leftImage img{
+  margin-top: 0px;
+  float: left;/* 左に配置 */
+  width: 200px;
+  }
+
+  #rightImage img{
+  margin-top: 0px;
+  float: right; /* 右に配置 */
+  width: 200px;
+  }
 
 </style>
 
@@ -97,7 +110,17 @@
   
   <div id="main">
     <div id="top">
-      <h1>～お気に入り一覧～</h1>
+      <h1>お気に入り一覧表</h1>
+    </div>
+    
+    <!-- 左の画像 -->
+    <div id="leftImage">
+      <img src="image/ale-hiyoko.png" alt="ale-hiyoko">
+    </div>
+    
+    <!-- 右の画像 -->
+    <div id="rightImage">
+      <img src="image/ouen-penguin.png" alt="ouen-penguin">
     </div>
     
     <div id= "text-center">
@@ -110,6 +133,11 @@
       </div>
       
     </div>
+    
+   
+
+    
+    
   </div>
   
   <script type="text/javascript">
